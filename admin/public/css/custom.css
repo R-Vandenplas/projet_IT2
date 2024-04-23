@@ -1,0 +1,5 @@
+.card-img-top {
+    width: 100%;  /* This will make the image take the full width of its parent element */
+    height: 400px;  /* This sets a fixed height */
+    object-fit: cover;  /* This will make the image cover the full width and height without distorting the image */
+}

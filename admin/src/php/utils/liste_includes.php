@@ -1,8 +1,8 @@
 <?php
 //Si on se trouve dans la partie admin
-if (file_exists('./lib/php/dbPgConnect.php')) {
-    require 'lib/php/dbPgConnect.php';
-    require 'lib/php/classes/Autoloader.class.php';
+if (file_exists('./src/php/db/dbPgConnect.php')) {
+    require 'src/php/db/dbPgConnect.php';
+    require 'src/php/classes/Autoloader.class.php';
     Autoloader::register();
     $cnx = Connexion::getInstance($dsn, $user, $password);
 } else {
@@ -14,4 +14,3 @@ if (file_exists('./lib/php/dbPgConnect.php')) {
         $cnx = Connexion::getInstance($dsn, $user, $password);
     }
 }
-
