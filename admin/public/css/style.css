@@ -9,7 +9,6 @@
     background-size: cover;
     background-position: center;
     text-align: center;
-
     color: #fff;
     padding: 100px 0;
 
@@ -20,6 +19,9 @@ h3 {
     text-align: center;
     font-size: 2.5rem;
 
+}
+strong {
+    color: #0D6EFD;
 }
 .col{
     margin-top: 2rem;

@@ -12,7 +12,7 @@ $allFilms = $film->getAllFilms();
                             <img src="./admin/public/images/<?= $film->affiche_film; ?>" class="card-img-top" alt="Image du film <?= $film->titre_film; ?>">
                             <div class="card-body">
                                 <h5 class="card-title"><?=  $film->titre_film; ?></h5>
-                                <a href="#" class="btn btn-primary">Réserver</a>
+                                <a href="index_.php?id_film=<?php print $film->id_film;?>&page=detail_film.php" class="btn btn-primary">Réserver</a>
                             </div>
                         </div>
                     </div>

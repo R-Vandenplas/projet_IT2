@@ -30,12 +30,13 @@ require './admin/src/php/utils/liste_includes.php';
         <?php
         //si aucune variable de session 'page'
         if (!isset($_SESSION['page'])) {
-            print "<br>pas de page<br>";
-            $_SESSION['page'] = "accueil.php";
+
+            $_SESSION['page'] = './pages/accueil.php';
         }
         if (isset($_GET['page'])) {
             //print "<br>paramètre page : ".$_GET['page']."<br>";
             $_SESSION['page'] = 'pages/'.$_GET['page'];
+
         }
         if (file_exists($_SESSION['page'])) {
             include $_SESSION['page'];
@@ -46,6 +47,7 @@ require './admin/src/php/utils/liste_includes.php';
     </div>
     <footer id="footer">&nbsp;</footer>
 </div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 
 </html>

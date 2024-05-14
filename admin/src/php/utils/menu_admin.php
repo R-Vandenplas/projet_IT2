@@ -1,13 +1,13 @@
 <div class="navigation">
     <ul class="nav nav-tabs nav-justified nav-fill">
         <li class="nav-item">
-            <a class="nav-link" " href="index_.php?page=accueil" >Acceuil</a>
+            <a class="nav-link"  href="index_.php?page=accueil_admin.php" >Acceuil</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="#">Programmation</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">Billets</a>
+            <a class="nav-link" href="index_.php?page=gestion_client.php">Gestion des clients</a>
         </li>
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
