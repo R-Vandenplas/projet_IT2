@@ -28,8 +28,8 @@
         </li>
         <li>
             <form class="d-flex" role="search">
-                <input class="form-control me-2" type="search" placeholder="Rechercher un film" aria-label="Search">
-                <button class="btn btn-primary" type="submit">Chercher</button>
+                <input id="nom_recherche" class="form-control me-2" type="search" placeholder="Rechercher un film" aria-label="Search">
+                <button id="btn_recherche" class="btn btn-primary" type="submit" >Chercher</button>
             </form>
         </li>
     </ul>

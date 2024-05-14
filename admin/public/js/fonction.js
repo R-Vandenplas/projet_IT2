@@ -1,4 +1,12 @@
 $(document).ready(function() {
+    var btn_recherche = $('#btn_recherche');
+    console.log(btn_recherche);
+    btn_recherche.click(function(event) {
+        event.preventDefault();
+        let nom_film = $('#nom_recherche').val();
+        window.location.href="index_.php?page=rech_film.php&nom=" + nom_film ;
+        console.log(nom_film);
+    })
 
 
     //quand une balise contient des atttributs,
