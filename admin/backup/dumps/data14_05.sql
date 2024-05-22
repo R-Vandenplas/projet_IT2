@@ -5,7 +5,7 @@
 -- Dumped from database version 16.3
 -- Dumped by pg_dump version 16.3
 
--- Started on 2024-05-14 10:45:44
+-- Started on 2024-05-14 15:06:56
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -324,15 +324,16 @@ CREATE TABLE public.salle (
 
 --
 -- TOC entry 217 (class 1259 OID 16458)
--- Name: sceance; Type: TABLE; Schema: public; Owner: -
+-- Name: seance; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE public.sceance (
-    id_sceance integer NOT NULL,
-    heure_debut date NOT NULL,
-    heure_fin date NOT NULL,
+CREATE TABLE public.seance (
+    id_seance integer NOT NULL,
+    date date NOT NULL,
     id_film integer NOT NULL,
-    numero_salle integer NOT NULL
+    numero_salle integer NOT NULL,
+    heure integer NOT NULL,
+    jour text
 );
 
 
@@ -341,7 +342,7 @@ CREATE TABLE public.sceance (
 -- Name: sceance_id_sceance_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-ALTER TABLE public.sceance ALTER COLUMN id_sceance ADD GENERATED ALWAYS AS IDENTITY (
+ALTER TABLE public.seance ALTER COLUMN id_seance ADD GENERATED ALWAYS AS IDENTITY (
     SEQUENCE NAME public.sceance_id_sceance_seq
     START WITH 1
     INCREMENT BY 1
@@ -395,7 +396,7 @@ INSERT INTO public.admin (id_admin, nom_admin, password) OVERRIDING SYSTEM VALUE
 -- Data for Name: client; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-INSERT INTO public.client (id_client, nom, prenom, email, adresse, numero, password) OVERRIDING SYSTEM VALUE VALUES (9, '0', '0', '0', '0', 'ouiii', NULL);
+INSERT INTO public.client (id_client, nom, prenom, email, adresse, numero, password) OVERRIDING SYSTEM VALUE VALUES (9, 'Vandenplas', 'Romain', 'a@a', '15', 'ouiii', NULL);
 
 
 --
@@ -427,14 +428,119 @@ INSERT INTO public.film (id_film, titre_film, description_film, genre_film, real
 -- Data for Name: salle; Type: TABLE DATA; Schema: public; Owner: -
 --
 
+INSERT INTO public.salle (numero_salle, "nombre_de_siège") VALUES (1, 100);
+INSERT INTO public.salle (numero_salle, "nombre_de_siège") VALUES (2, 80);
+INSERT INTO public.salle (numero_salle, "nombre_de_siège") VALUES (3, 120);
+INSERT INTO public.salle (numero_salle, "nombre_de_siège") VALUES (4, 90);
+INSERT INTO public.salle (numero_salle, "nombre_de_siège") VALUES (5, 110);
 
 
 --
 -- TOC entry 4826 (class 0 OID 16458)
 -- Dependencies: 217
--- Data for Name: sceance; Type: TABLE DATA; Schema: public; Owner: -
+-- Data for Name: seance; Type: TABLE DATA; Schema: public; Owner: -
 --
 
+INSERT INTO public.seance (id_seance, date, id_film, numero_salle, heure, jour) OVERRIDING SYSTEM VALUE VALUES (26, '2024-05-14', 1, 1, 9, 'mardi');
+INSERT INTO public.seance (id_seance, date, id_film, numero_salle, heure, jour) OVERRIDING SYSTEM VALUE VALUES (27, '2024-05-14', 3, 2, 9, 'mardi');
+INSERT INTO public.seance (id_seance, date, id_film, numero_salle, heure, jour) OVERRIDING SYSTEM VALUE VALUES (28, '2024-05-14', 5, 3, 9, 'mardi');
+INSERT INTO public.seance (id_seance, date, id_film, numero_salle, heure, jour) OVERRIDING SYSTEM VALUE VALUES (29, '2024-05-14', 7, 4, 9, 'mardi');
+INSERT INTO public.seance (id_seance, date, id_film, numero_salle, heure, jour) OVERRIDING SYSTEM VALUE VALUES (30, '2024-05-14', 9, 5, 9, 'mardi');
+INSERT INTO public.seance (id_seance, date, id_film, numero_salle, heure, jour) OVERRIDING SYSTEM VALUE VALUES (31, '2024-05-14', 11, 1, 13, 'mardi');
+INSERT INTO public.seance (id_seance, date, id_film, numero_salle, heure, jour) OVERRIDING SYSTEM VALUE VALUES (32, '2024-05-14', 13, 2, 13, 'mardi');
+INSERT INTO public.seance (id_seance, date, id_film, numero_salle, heure, jour) OVERRIDING SYSTEM VALUE VALUES (33, '2024-05-14', 15, 3, 13, 'mardi');
+INSERT INTO public.seance (id_seance, date, id_film, numero_salle, heure, jour) OVERRIDING SYSTEM VALUE VALUES (34, '2024-05-14', 12, 4, 13, 'mardi');
+INSERT INTO public.seance (id_seance, date, id_film, numero_salle, heure, jour) OVERRIDING SYSTEM VALUE VALUES (35, '2024-05-14', 14, 5, 13, 'mardi');
+INSERT INTO public.seance (id_seance, date, id_film, numero_salle, heure, jour) OVERRIDING SYSTEM VALUE VALUES (36, '2024-05-14', 2, 1, 17, 'mardi');
+INSERT INTO public.seance (id_seance, date, id_film, numero_salle, heure, jour) OVERRIDING SYSTEM VALUE VALUES (37, '2024-05-14', 4, 2, 17, 'mardi');
+INSERT INTO public.seance (id_seance, date, id_film, numero_salle, heure, jour) OVERRIDING SYSTEM VALUE VALUES (38, '2024-05-14', 3, 3, 17, 'mardi');
+INSERT INTO public.seance (id_seance, date, id_film, numero_salle, heure, jour) OVERRIDING SYSTEM VALUE VALUES (39, '2024-05-14', 7, 4, 17, 'mardi');
+INSERT INTO public.seance (id_seance, date, id_film, numero_salle, heure, jour) OVERRIDING SYSTEM VALUE VALUES (40, '2024-05-14', 10, 5, 17, 'mardi');
+INSERT INTO public.seance (id_seance, date, id_film, numero_salle, heure, jour) OVERRIDING SYSTEM VALUE VALUES (41, '2024-05-14', 11, 1, 20, 'mardi');
+INSERT INTO public.seance (id_seance, date, id_film, numero_salle, heure, jour) OVERRIDING SYSTEM VALUE VALUES (42, '2024-05-14', 9, 2, 20, 'mardi');
+INSERT INTO public.seance (id_seance, date, id_film, numero_salle, heure, jour) OVERRIDING SYSTEM VALUE VALUES (43, '2024-05-14', 14, 3, 20, 'mardi');
+INSERT INTO public.seance (id_seance, date, id_film, numero_salle, heure, jour) OVERRIDING SYSTEM VALUE VALUES (44, '2024-05-14', 8, 4, 20, 'mardi');
+INSERT INTO public.seance (id_seance, date, id_film, numero_salle, heure, jour) OVERRIDING SYSTEM VALUE VALUES (45, '2024-05-14', 7, 5, 20, 'mardi');
+INSERT INTO public.seance (id_seance, date, id_film, numero_salle, heure, jour) OVERRIDING SYSTEM VALUE VALUES (6, '2024-05-13', 1, 1, 9, 'lundi');
+INSERT INTO public.seance (id_seance, date, id_film, numero_salle, heure, jour) OVERRIDING SYSTEM VALUE VALUES (7, '2024-05-13', 2, 2, 9, 'lundi');
+INSERT INTO public.seance (id_seance, date, id_film, numero_salle, heure, jour) OVERRIDING SYSTEM VALUE VALUES (8, '2024-05-13', 3, 3, 9, 'lundi');
+INSERT INTO public.seance (id_seance, date, id_film, numero_salle, heure, jour) OVERRIDING SYSTEM VALUE VALUES (9, '2024-05-13', 4, 4, 9, 'lundi');
+INSERT INTO public.seance (id_seance, date, id_film, numero_salle, heure, jour) OVERRIDING SYSTEM VALUE VALUES (10, '2024-05-13', 5, 5, 9, 'lundi');
+INSERT INTO public.seance (id_seance, date, id_film, numero_salle, heure, jour) OVERRIDING SYSTEM VALUE VALUES (11, '2024-05-13', 6, 1, 13, 'lundi');
+INSERT INTO public.seance (id_seance, date, id_film, numero_salle, heure, jour) OVERRIDING SYSTEM VALUE VALUES (12, '2024-05-13', 7, 2, 13, 'lundi');
+INSERT INTO public.seance (id_seance, date, id_film, numero_salle, heure, jour) OVERRIDING SYSTEM VALUE VALUES (13, '2024-05-13', 8, 3, 13, 'lundi');
+INSERT INTO public.seance (id_seance, date, id_film, numero_salle, heure, jour) OVERRIDING SYSTEM VALUE VALUES (14, '2024-05-13', 9, 4, 13, 'lundi');
+INSERT INTO public.seance (id_seance, date, id_film, numero_salle, heure, jour) OVERRIDING SYSTEM VALUE VALUES (15, '2024-05-13', 10, 5, 13, 'lundi');
+INSERT INTO public.seance (id_seance, date, id_film, numero_salle, heure, jour) OVERRIDING SYSTEM VALUE VALUES (16, '2024-05-13', 11, 1, 17, 'lundi');
+INSERT INTO public.seance (id_seance, date, id_film, numero_salle, heure, jour) OVERRIDING SYSTEM VALUE VALUES (17, '2024-05-13', 12, 2, 17, 'lundi');
+INSERT INTO public.seance (id_seance, date, id_film, numero_salle, heure, jour) OVERRIDING SYSTEM VALUE VALUES (18, '2024-05-13', 13, 3, 17, 'lundi');
+INSERT INTO public.seance (id_seance, date, id_film, numero_salle, heure, jour) OVERRIDING SYSTEM VALUE VALUES (19, '2024-05-13', 14, 4, 17, 'lundi');
+INSERT INTO public.seance (id_seance, date, id_film, numero_salle, heure, jour) OVERRIDING SYSTEM VALUE VALUES (46, '2024-05-15', 4, 1, 9, 'mercredi');
+INSERT INTO public.seance (id_seance, date, id_film, numero_salle, heure, jour) OVERRIDING SYSTEM VALUE VALUES (47, '2024-05-15', 6, 2, 9, 'mercredi');
+INSERT INTO public.seance (id_seance, date, id_film, numero_salle, heure, jour) OVERRIDING SYSTEM VALUE VALUES (48, '2024-05-15', 8, 3, 9, 'mercredi');
+INSERT INTO public.seance (id_seance, date, id_film, numero_salle, heure, jour) OVERRIDING SYSTEM VALUE VALUES (49, '2024-05-15', 10, 4, 9, 'mercredi');
+INSERT INTO public.seance (id_seance, date, id_film, numero_salle, heure, jour) OVERRIDING SYSTEM VALUE VALUES (50, '2024-05-15', 12, 5, 9, 'mercredi');
+INSERT INTO public.seance (id_seance, date, id_film, numero_salle, heure, jour) OVERRIDING SYSTEM VALUE VALUES (51, '2024-05-15', 9, 1, 13, 'mercredi');
+INSERT INTO public.seance (id_seance, date, id_film, numero_salle, heure, jour) OVERRIDING SYSTEM VALUE VALUES (52, '2024-05-15', 1, 2, 13, 'mercredi');
+INSERT INTO public.seance (id_seance, date, id_film, numero_salle, heure, jour) OVERRIDING SYSTEM VALUE VALUES (53, '2024-05-15', 3, 3, 13, 'mercredi');
+INSERT INTO public.seance (id_seance, date, id_film, numero_salle, heure, jour) OVERRIDING SYSTEM VALUE VALUES (54, '2024-05-15', 15, 4, 13, 'mercredi');
+INSERT INTO public.seance (id_seance, date, id_film, numero_salle, heure, jour) OVERRIDING SYSTEM VALUE VALUES (55, '2024-05-15', 2, 5, 13, 'mercredi');
+INSERT INTO public.seance (id_seance, date, id_film, numero_salle, heure, jour) OVERRIDING SYSTEM VALUE VALUES (56, '2024-05-15', 5, 1, 17, 'mercredi');
+INSERT INTO public.seance (id_seance, date, id_film, numero_salle, heure, jour) OVERRIDING SYSTEM VALUE VALUES (57, '2024-05-15', 7, 2, 17, 'mercredi');
+INSERT INTO public.seance (id_seance, date, id_film, numero_salle, heure, jour) OVERRIDING SYSTEM VALUE VALUES (58, '2024-05-15', 6, 3, 17, 'mercredi');
+INSERT INTO public.seance (id_seance, date, id_film, numero_salle, heure, jour) OVERRIDING SYSTEM VALUE VALUES (59, '2024-05-15', 10, 4, 17, 'mercredi');
+INSERT INTO public.seance (id_seance, date, id_film, numero_salle, heure, jour) OVERRIDING SYSTEM VALUE VALUES (60, '2024-05-15', 13, 5, 17, 'mercredi');
+INSERT INTO public.seance (id_seance, date, id_film, numero_salle, heure, jour) OVERRIDING SYSTEM VALUE VALUES (61, '2024-05-15', 14, 1, 20, 'mercredi');
+INSERT INTO public.seance (id_seance, date, id_film, numero_salle, heure, jour) OVERRIDING SYSTEM VALUE VALUES (62, '2024-05-15', 12, 2, 20, 'mercredi');
+INSERT INTO public.seance (id_seance, date, id_film, numero_salle, heure, jour) OVERRIDING SYSTEM VALUE VALUES (63, '2024-05-15', 2, 3, 20, 'mercredi');
+INSERT INTO public.seance (id_seance, date, id_film, numero_salle, heure, jour) OVERRIDING SYSTEM VALUE VALUES (64, '2024-05-15', 11, 4, 20, 'mercredi');
+INSERT INTO public.seance (id_seance, date, id_film, numero_salle, heure, jour) OVERRIDING SYSTEM VALUE VALUES (65, '2024-05-15', 8, 5, 20, 'mercredi');
+INSERT INTO public.seance (id_seance, date, id_film, numero_salle, heure, jour) OVERRIDING SYSTEM VALUE VALUES (66, '2024-05-16', 7, 1, 9, 'jeudi');
+INSERT INTO public.seance (id_seance, date, id_film, numero_salle, heure, jour) OVERRIDING SYSTEM VALUE VALUES (67, '2024-05-16', 9, 2, 9, 'jeudi');
+INSERT INTO public.seance (id_seance, date, id_film, numero_salle, heure, jour) OVERRIDING SYSTEM VALUE VALUES (68, '2024-05-16', 11, 3, 9, 'jeudi');
+INSERT INTO public.seance (id_seance, date, id_film, numero_salle, heure, jour) OVERRIDING SYSTEM VALUE VALUES (69, '2024-05-16', 13, 4, 9, 'jeudi');
+INSERT INTO public.seance (id_seance, date, id_film, numero_salle, heure, jour) OVERRIDING SYSTEM VALUE VALUES (70, '2024-05-16', 15, 5, 9, 'jeudi');
+INSERT INTO public.seance (id_seance, date, id_film, numero_salle, heure, jour) OVERRIDING SYSTEM VALUE VALUES (71, '2024-05-16', 12, 1, 13, 'jeudi');
+INSERT INTO public.seance (id_seance, date, id_film, numero_salle, heure, jour) OVERRIDING SYSTEM VALUE VALUES (72, '2024-05-16', 4, 2, 13, 'jeudi');
+INSERT INTO public.seance (id_seance, date, id_film, numero_salle, heure, jour) OVERRIDING SYSTEM VALUE VALUES (73, '2024-05-16', 7, 3, 13, 'jeudi');
+INSERT INTO public.seance (id_seance, date, id_film, numero_salle, heure, jour) OVERRIDING SYSTEM VALUE VALUES (74, '2024-05-16', 3, 4, 13, 'jeudi');
+INSERT INTO public.seance (id_seance, date, id_film, numero_salle, heure, jour) OVERRIDING SYSTEM VALUE VALUES (75, '2024-05-16', 5, 5, 13, 'jeudi');
+INSERT INTO public.seance (id_seance, date, id_film, numero_salle, heure, jour) OVERRIDING SYSTEM VALUE VALUES (76, '2024-05-16', 8, 1, 17, 'jeudi');
+INSERT INTO public.seance (id_seance, date, id_film, numero_salle, heure, jour) OVERRIDING SYSTEM VALUE VALUES (77, '2024-05-16', 10, 2, 17, 'jeudi');
+INSERT INTO public.seance (id_seance, date, id_film, numero_salle, heure, jour) OVERRIDING SYSTEM VALUE VALUES (78, '2024-05-16', 9, 3, 17, 'jeudi');
+INSERT INTO public.seance (id_seance, date, id_film, numero_salle, heure, jour) OVERRIDING SYSTEM VALUE VALUES (79, '2024-05-16', 13, 4, 17, 'jeudi');
+INSERT INTO public.seance (id_seance, date, id_film, numero_salle, heure, jour) OVERRIDING SYSTEM VALUE VALUES (80, '2024-05-16', 1, 5, 17, 'jeudi');
+INSERT INTO public.seance (id_seance, date, id_film, numero_salle, heure, jour) OVERRIDING SYSTEM VALUE VALUES (81, '2024-05-16', 2, 1, 20, 'jeudi');
+INSERT INTO public.seance (id_seance, date, id_film, numero_salle, heure, jour) OVERRIDING SYSTEM VALUE VALUES (82, '2024-05-16', 15, 2, 20, 'jeudi');
+INSERT INTO public.seance (id_seance, date, id_film, numero_salle, heure, jour) OVERRIDING SYSTEM VALUE VALUES (83, '2024-05-16', 5, 3, 20, 'jeudi');
+INSERT INTO public.seance (id_seance, date, id_film, numero_salle, heure, jour) OVERRIDING SYSTEM VALUE VALUES (84, '2024-05-16', 14, 4, 20, 'jeudi');
+INSERT INTO public.seance (id_seance, date, id_film, numero_salle, heure, jour) OVERRIDING SYSTEM VALUE VALUES (85, '2024-05-16', 11, 5, 20, 'jeudi');
+INSERT INTO public.seance (id_seance, date, id_film, numero_salle, heure, jour) OVERRIDING SYSTEM VALUE VALUES (86, '2024-05-17', 10, 1, 9, 'vendredi');
+INSERT INTO public.seance (id_seance, date, id_film, numero_salle, heure, jour) OVERRIDING SYSTEM VALUE VALUES (87, '2024-05-17', 12, 2, 9, 'vendredi');
+INSERT INTO public.seance (id_seance, date, id_film, numero_salle, heure, jour) OVERRIDING SYSTEM VALUE VALUES (88, '2024-05-17', 14, 3, 9, 'vendredi');
+INSERT INTO public.seance (id_seance, date, id_film, numero_salle, heure, jour) OVERRIDING SYSTEM VALUE VALUES (89, '2024-05-17', 1, 4, 9, 'vendredi');
+INSERT INTO public.seance (id_seance, date, id_film, numero_salle, heure, jour) OVERRIDING SYSTEM VALUE VALUES (90, '2024-05-17', 3, 5, 9, 'vendredi');
+INSERT INTO public.seance (id_seance, date, id_film, numero_salle, heure, jour) OVERRIDING SYSTEM VALUE VALUES (91, '2024-05-17', 15, 1, 13, 'vendredi');
+INSERT INTO public.seance (id_seance, date, id_film, numero_salle, heure, jour) OVERRIDING SYSTEM VALUE VALUES (92, '2024-05-17', 7, 2, 13, 'vendredi');
+INSERT INTO public.seance (id_seance, date, id_film, numero_salle, heure, jour) OVERRIDING SYSTEM VALUE VALUES (93, '2024-05-17', 10, 3, 13, 'vendredi');
+INSERT INTO public.seance (id_seance, date, id_film, numero_salle, heure, jour) OVERRIDING SYSTEM VALUE VALUES (94, '2024-05-17', 6, 4, 13, 'vendredi');
+INSERT INTO public.seance (id_seance, date, id_film, numero_salle, heure, jour) OVERRIDING SYSTEM VALUE VALUES (95, '2024-05-17', 8, 5, 13, 'vendredi');
+INSERT INTO public.seance (id_seance, date, id_film, numero_salle, heure, jour) OVERRIDING SYSTEM VALUE VALUES (96, '2024-05-17', 11, 1, 17, 'vendredi');
+INSERT INTO public.seance (id_seance, date, id_film, numero_salle, heure, jour) OVERRIDING SYSTEM VALUE VALUES (97, '2024-05-17', 13, 2, 17, 'vendredi');
+INSERT INTO public.seance (id_seance, date, id_film, numero_salle, heure, jour) OVERRIDING SYSTEM VALUE VALUES (98, '2024-05-17', 12, 3, 17, 'vendredi');
+INSERT INTO public.seance (id_seance, date, id_film, numero_salle, heure, jour) OVERRIDING SYSTEM VALUE VALUES (99, '2024-05-17', 1, 4, 17, 'vendredi');
+INSERT INTO public.seance (id_seance, date, id_film, numero_salle, heure, jour) OVERRIDING SYSTEM VALUE VALUES (100, '2024-05-17', 4, 5, 17, 'vendredi');
+INSERT INTO public.seance (id_seance, date, id_film, numero_salle, heure, jour) OVERRIDING SYSTEM VALUE VALUES (101, '2024-05-17', 5, 1, 20, 'vendredi');
+INSERT INTO public.seance (id_seance, date, id_film, numero_salle, heure, jour) OVERRIDING SYSTEM VALUE VALUES (102, '2024-05-17', 3, 2, 20, 'vendredi');
+INSERT INTO public.seance (id_seance, date, id_film, numero_salle, heure, jour) OVERRIDING SYSTEM VALUE VALUES (20, '2024-05-13', 15, 5, 17, 'lundi');
+INSERT INTO public.seance (id_seance, date, id_film, numero_salle, heure, jour) OVERRIDING SYSTEM VALUE VALUES (21, '2024-05-13', 2, 1, 20, 'lundi');
+INSERT INTO public.seance (id_seance, date, id_film, numero_salle, heure, jour) OVERRIDING SYSTEM VALUE VALUES (22, '2024-05-13', 4, 2, 20, 'lundi');
+INSERT INTO public.seance (id_seance, date, id_film, numero_salle, heure, jour) OVERRIDING SYSTEM VALUE VALUES (23, '2024-05-13', 6, 3, 20, 'lundi');
+INSERT INTO public.seance (id_seance, date, id_film, numero_salle, heure, jour) OVERRIDING SYSTEM VALUE VALUES (24, '2024-05-13', 8, 4, 20, 'lundi');
+INSERT INTO public.seance (id_seance, date, id_film, numero_salle, heure, jour) OVERRIDING SYSTEM VALUE VALUES (25, '2024-05-13', 10, 5, 20, 'lundi');
+INSERT INTO public.seance (id_seance, date, id_film, numero_salle, heure, jour) OVERRIDING SYSTEM VALUE VALUES (103, '2024-05-17', 8, 3, 20, 'vendredi');
+INSERT INTO public.seance (id_seance, date, id_film, numero_salle, heure, jour) OVERRIDING SYSTEM VALUE VALUES (104, '2024-05-17', 2, 4, 20, 'vendredi');
+INSERT INTO public.seance (id_seance, date, id_film, numero_salle, heure, jour) OVERRIDING SYSTEM VALUE VALUES (105, '2024-05-17', 14, 5, 20, 'vendredi');
 
 
 --
@@ -487,7 +593,7 @@ SELECT pg_catalog.setval('public.film_id_film_seq', 15, true);
 -- Name: sceance_id_sceance_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.sceance_id_sceance_seq', 1, false);
+SELECT pg_catalog.setval('public.sceance_id_sceance_seq', 105, true);
 
 
 --
@@ -537,11 +643,11 @@ ALTER TABLE ONLY public.salle
 
 --
 -- TOC entry 4670 (class 2606 OID 16462)
--- Name: sceance sceance_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: seance sceance_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.sceance
-    ADD CONSTRAINT sceance_pkey PRIMARY KEY (id_sceance);
+ALTER TABLE ONLY public.seance
+    ADD CONSTRAINT sceance_pkey PRIMARY KEY (id_seance);
 
 
 --
@@ -555,19 +661,19 @@ ALTER TABLE ONLY public.ticket
 
 --
 -- TOC entry 4677 (class 2606 OID 16463)
--- Name: sceance sceance_id_film_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: seance sceance_id_film_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.sceance
+ALTER TABLE ONLY public.seance
     ADD CONSTRAINT sceance_id_film_fkey FOREIGN KEY (id_film) REFERENCES public.film(id_film);
 
 
 --
 -- TOC entry 4678 (class 2606 OID 16468)
--- Name: sceance sceance_numero_salle_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: seance sceance_numero_salle_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.sceance
+ALTER TABLE ONLY public.seance
     ADD CONSTRAINT sceance_numero_salle_fkey FOREIGN KEY (numero_salle) REFERENCES public.salle(numero_salle);
 
 
@@ -586,10 +692,10 @@ ALTER TABLE ONLY public.ticket
 --
 
 ALTER TABLE ONLY public.ticket
-    ADD CONSTRAINT ticket_id_sceance_fkey FOREIGN KEY (id_sceance) REFERENCES public.sceance(id_sceance);
+    ADD CONSTRAINT ticket_id_sceance_fkey FOREIGN KEY (id_sceance) REFERENCES public.seance(id_seance);
 
 
--- Completed on 2024-05-14 10:45:46
+-- Completed on 2024-05-14 15:06:57
 
 --
 -- PostgreSQL database dump complete

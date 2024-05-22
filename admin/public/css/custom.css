@@ -7,3 +7,6 @@
     width: 18rem;
     margin: auto;
 }
+.btn-primary {
+    max-width: 200px;
+}
