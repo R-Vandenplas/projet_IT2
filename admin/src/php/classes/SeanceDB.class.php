@@ -63,5 +63,22 @@ class SeanceDB extends Seance
             print "Echec de la requête " . $e->getMessage();
         }
     }
+    public function getSeanceById($id_seance)
+    {
+        $query = "select * from seance where id_seance = :id_seance";
+        try {
+            $resultset = $this->_db->prepare($query);
+            $resultset->bindValue(':id_seance', $id_seance);
+            $resultset->execute();
+            $data = $resultset->fetch();
+            if (!empty($data)) {
+                return new Seance($data);
+            } else {
+                return null;
+            }
+        } catch (PDOException $e) {
+            print "Echec de la requête " . $e->getMessage();
+        }
+    }
 
 }

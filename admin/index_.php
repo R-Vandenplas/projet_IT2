@@ -11,7 +11,7 @@ require './src/php/utils/liste_includes.php';
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="./public/css/style.css" type="text/css">
     <link rel="stylesheet" href="./public/css/custom.css" type="text/css">
-    <script src="./public/js/fonction.js"></script>
+    <script src="public/js/fonction.js"></script>
 </head>
 <body>
 <div class="container">

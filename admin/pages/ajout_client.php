@@ -18,8 +18,8 @@
             <input type="text" class="form-control" id="adresse">
         </div>
         <div class="mb-3">
-            <label for="numero" class="form-label">Numero</label>
-            <input type="text" class="form-control" id="numero">
+            <label for="password" class="form-label">Mot de passe</label>
+            <input type="text" class="form-control" id="password">
         </div>
         <button type="submit" id="texte_bouton_submit" class="btn btn-primary">
             Ajouter ou Modifier

@@ -26,6 +26,10 @@ class AdminDB extends Admin
         } catch (PDOException $e) {
             $this->_bd->rollback();
             print "Echec de la requête " . $e->getMessage();
+        }finally {
+            if ($this->_bd->inTransaction()) {
+                $this->_bd->commit();
+            }
         }
 
     }

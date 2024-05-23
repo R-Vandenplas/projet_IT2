@@ -1,12 +1,23 @@
 $(document).ready(function() {
     var btn_recherche = $('#btn_recherche');
-    console.log(btn_recherche);
+
     btn_recherche.click(function(event) {
         event.preventDefault();
         let nom_film = $('#nom_recherche').val();
         window.location.href="index_.php?page=rech_film.php&nom=" + nom_film ;
-        console.log(nom_film);
+
     })
+
+    $('#deco').click(function () {
+        if (confirm("Voulez-vous vous déconnecter ?")) {
+            window.location.href = "index_.php?page=logout.php";
+            alert("Vous avez été déconnecté");
+        }
+    });
+
+    $('#res_connexion').click(function () {
+        window.location.reload();
+    });
 
 
     //quand une balise contient des atttributs,
@@ -47,8 +58,8 @@ $(document).ready(function() {
         let nom = $('#nom').val();
         let prenom = $('#prenom').val();
         let adresse = $('#adresse').val();
-        let numero = $('#numero').val();
-        let param = 'email=' + email + '&nom=' + nom + '&prenom=' + prenom + '&adresse=' + adresse + '&numero=' + numero;
+        let password = $('#password').val();
+        let param = 'email=' + email + '&nom=' + nom + '&prenom=' + prenom + '&adresse=' + adresse + '&password=' + password;
         let retour = $.ajax({
             type: 'get',
             dataType: 'json',
@@ -56,7 +67,9 @@ $(document).ready(function() {
             url: './src/php/ajax/ajaxAjoutClient.php',
             success: function (data) {//data = retour du # php
                 console.log(data);
+                window.location.href = "index_.php?page=gestion_client.php";
             }
+
         })
     })
 
@@ -75,7 +88,7 @@ $(document).ready(function() {
                 $('#nom').val(data[0].nom);
                 $('#prenom').val(data[0].prenom);
                 $('#adresse').val(data[0].adresse);
-                $('#numero').val(data[0].numero);
+                $('#password').val(data[0].password);
                 $('#texte_bouton_submit').text("Mettre à jour");
 
                 let nom2 = $('#nom').val();

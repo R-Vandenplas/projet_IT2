@@ -22,7 +22,7 @@ else{
             <th scope="col">Prénom</th>
             <th scope="col">Email</th>
             <th scope="col">Adresse</th>
-            <th scope="col">Numéro</th>
+            <th scope="col">Password</th>
             <th scope="col">Supprimer</th>
         </tr>
 
@@ -37,7 +37,7 @@ else{
                 <td contenteditable="true" id="<?= $liste[$i]->id_client;?>" name="prenom"><?= $liste[$i]->prenom;?></td>
                 <td contenteditable="true" id="<?= $liste[$i]->id_client;?>" name="email"><?= $liste[$i]->email;?></td>
                 <td contenteditable="true" id="<?= $liste[$i]->id_client;?>" name="adresse"><?= $liste[$i]->adresse;?></td>
-                <td contenteditable="true" id="<?= $liste[$i]->id_client;?>" name="numero><?= $liste[$i]->numero;?>"><?= $liste[$i]->numero;?></td>
+                <td contenteditable="true" id="<?= $liste[$i]->id_client;?>" name="password><?= $liste[$i]->password;?>"><?= $liste[$i]->password;?></td>
                 <td contenteditable="false" > <img class="delete_btn" src="public/images/delete.jpg" alt="Effacer" ></td>
             </tr>
             <?php
