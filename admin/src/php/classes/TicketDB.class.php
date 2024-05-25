@@ -13,7 +13,7 @@ class TicketDB extends Ticket
     public function ajout_ticket($client,$seance,$quantite){
         try{
             $query="select ajout_ticket(:client,:seance,:quantite) as retour"; //as retour si on veut récupérer une donnée
-            $res = $this->_bd->prepare($query);
+            $res = $this->_db->prepare($query);
             $res->bindValue(':client',intval($client));
             $res->bindValue(':seance',intval($seance));
             $res->bindValue(':quantite',intval($quantite));

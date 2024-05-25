@@ -9,22 +9,36 @@ $tickets = $ticketDB->getTicketByClient($client['id_client']);
 <div>
 <?php
 if($tickets){
+?>
+    <div class="accordion" id="accordionPanelsStayOpenExample">
+        <?php
 
-
-foreach ($tickets as $t) {
+foreach ($tickets as $key => $t) {
     $seanceDB = new SeanceDB($cnx);
     $seance = $seanceDB->getSeanceById($t->id_seance);
     $filmDB = new FilmDB($cnx);
     $film = $filmDB->getFilmById($seance->id_film);
-    ?>
-    <div>
-        <h5><?= $film[0]->titre_film ?></h5>
-        <p><?= $seance->jour ?> <?= $seance->date ?> <?= $seance->heure ?> H</p>
-        <p>Nombre de tickets : <?= $t->quantite ?></p>
-        <p>Salle : <?=$seance->numero_salle ?> </p>
+    $collapseId = "collapse" . $key; // Générer un identifiant unique pour chaque accordéon
+    $date = new DateTime($seance->date);
+    $formattedDate = $date->format('d-m-Y');
+?>
+    <div class="accordion-item">
+        <h2 class="accordion-header">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#<?= $collapseId ?>" aria-expanded="true" aria-controls="<?= $collapseId ?>">
+               ticket pour <?= $film[0]->titre_film ?> le <?= $formattedDate ?>
+            </button>
+        </h2>
+        <div id="<?= $collapseId ?>" class="accordion-collapse collapse">
+            <div class="accordion-body">
+                <p>Nombre de tickets : <?= $t->quantite ?></p>
+                <p>Le <?= $formattedDate ?> à <?= $seance->heure ?> H</p>
+                <p>Salle n° <?= $seance->numero_salle ?></p>
+            </div>
+        </div>
     </div>
-    <?php
+<?php
 }
+
 }
 else{
     ?>
