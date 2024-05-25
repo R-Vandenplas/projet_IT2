@@ -31,7 +31,7 @@ if (isset($_POST['submit_login'])) { //name du submit
 }
 ?>
 <!-- formulaire de cnx ici -->
-
+<a href="index_.php?page=new_client.php">Créer un compte</a>
 <form method="post" action="<?= $_SERVER['PHP_SELF']; ?>">
     <div class="mb-3">
         <label for="login" class="form-label">Email address</label>

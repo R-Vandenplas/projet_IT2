@@ -7,7 +7,7 @@
             <a class="nav-link" href="index_.php?page=programmation.php">Programmation</a>
         </li>
         <?php
-        if ($_SESSION['client'] != 0) {
+        if (isset($_SESSION['client']) && $_SESSION['client'] != 0) {
             ?>
             <li class="nav-item">
                 <a class="nav-link" href="index_.php?page=billets.php">Billets</a>

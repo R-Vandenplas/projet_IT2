@@ -18,8 +18,7 @@ if (isset($_POST['submit_login'])) { //name du submit
 if(isset($_POST['submit_reserver'])) {
     extract($_POST, EXTR_OVERWRITE);
     $ticketDB = new TicketDB($cnx);
-    $ticket = $ticketDB->ajout_ticket($seance, $id_client, $nb_tickets);
-    var_dump($ticket);
+    $ticket = $ticketDB->ajout_ticket($_SESSION['client'],$seance, $nb_tickets);
     if ($ticket) {
         print 'Ticket réservé';
     } else {
@@ -27,7 +26,7 @@ if(isset($_POST['submit_reserver'])) {
     }
 }
 
-if ($_SESSION['client'] != 0) {
+if (isset($_SESSION['client'])&& $_SESSION['client'] != 0) {
     $clientDB = new ClientDB($cnx);
     $client = $clientDB->getClientById($_SESSION['client']);
     ?>
@@ -63,6 +62,7 @@ if ($_SESSION['client'] != 0) {
     ?>
     <h4>Veuillez vous connecter pour réserver un ticket </h4>
     <!-- formulaire de cnx ici -->
+    <a href="index_.php?page=new_client.php">Créer un compte</a>
     <form method="post" action="">
         <div class="mb-3">
             <label for="login" class="form-label">Email address</label>

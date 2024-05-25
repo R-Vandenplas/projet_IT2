@@ -1,10 +1,10 @@
-$(document).ready(function() {
+$(document).ready(function () {
     var btn_recherche = $('#btn_recherche');
 
-    btn_recherche.click(function(event) {
+    btn_recherche.click(function (event) {
         event.preventDefault();
         let nom_film = $('#nom_recherche').val();
-        window.location.href="index_.php?page=rech_film.php&nom=" + nom_film ;
+        window.location.href = "index_.php?page=rech_film.php&nom=" + nom_film;
 
     })
 
@@ -95,7 +95,9 @@ $(document).ready(function() {
                 if (nom2 === '') {
                     $('#texte_bouton_submit').text("Ajouter");
                 }
-                $('#texte_bouton_submit').click(function (){window.location.href = "index_.php?page=gestion_client.php";})
+                $('#texte_bouton_submit').click(function () {
+                    window.location.href = "index_.php?page=gestion_client.php";
+                })
 
 
             }
@@ -117,6 +119,28 @@ $(document).ready(function() {
         })
         location.reload();
     })
+
+    $('#form_cli').submit(function (e) {
+        e.preventDefault();
+        let email = $('#mail').val();
+        let nom = $('#nom').val();
+        let prenom = $('#prenom').val();
+        let adresse = $('#adresse').val();
+        let password = $('#password').val();
+        let param = 'email=' + email + '&nom=' + nom + '&prenom=' + prenom + '&adresse=' + adresse + '&password=' + password;
+        $.ajax({
+            type: 'get',
+            dataType: 'json',
+            data: param,
+            url: './admin/src/php/ajax/ajaxAjoutClient.php',
+            success: function (data) {
+                console.log(data);
+                alert("Client ajouté avec succès");
+                $('#form_cli')[0].reset();
+            }
+        })
+    });
+
 
 })
 

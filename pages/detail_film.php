@@ -12,8 +12,8 @@ $seance = $seanceDB->getSeanceByFilm($_GET['id_film']);
             <img class="img-fluid rounded" src="./admin/public/images/<?= $film[0]->affiche_film; ?> " width="100%"
                  alt="Image du film <?= $film[0]->titre_film; ?>">
         </div>
-        <div class="col-md-8">
-            <h3>Titre : <?= $film[0]->titre_film; ?></h3>
+        <div  class="col-md-8">
+            <h3 >Titre : <?= $film[0]->titre_film; ?></h3>
             <div class="row">
                 <div class="col-md-6">
                     <p><strong>Description</strong></p>
