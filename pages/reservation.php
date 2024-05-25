@@ -19,11 +19,13 @@ if(isset($_POST['submit_reserver'])) {
     extract($_POST, EXTR_OVERWRITE);
     $ticketDB = new TicketDB($cnx);
     $ticket = $ticketDB->ajout_ticket($_SESSION['client'],$seance, $nb_tickets);
-    print $ticket;
+
     if ($ticket==1) {
-        print 'Ticket réservé';
+        ?>
+            <meta http-equiv="refresh" content="0;url=index_.php?page=billets.php">
+        <?php
     } else {
-        print 'Erreur lors de la réservation';
+        print '<h3>Erreur lors de la réservation</h3>';
     }
 }
 

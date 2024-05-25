@@ -31,7 +31,7 @@ foreach ($tickets as $key => $t) {
         <div id="<?= $collapseId ?>" class="accordion-collapse collapse">
             <div class="accordion-body">
                 <p>Nombre de tickets : <?= $t->quantite ?></p>
-                <p>Le <?= $formattedDate ?> à <?= $seance->heure ?> H</p>
+                <p>Le <?= $seance->jour ?> <?= $formattedDate ?> à <?= $seance->heure ?> H</p>
                 <p>Salle n° <?= $seance->numero_salle ?></p>
             </div>
         </div>
