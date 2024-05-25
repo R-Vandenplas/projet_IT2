@@ -19,14 +19,15 @@ if(isset($_POST['submit_reserver'])) {
     extract($_POST, EXTR_OVERWRITE);
     $ticketDB = new TicketDB($cnx);
     $ticket = $ticketDB->ajout_ticket($_SESSION['client'],$seance, $nb_tickets);
-    if ($ticket) {
+    print $ticket;
+    if ($ticket==1) {
         print 'Ticket réservé';
     } else {
         print 'Erreur lors de la réservation';
     }
 }
 
-if (isset($_SESSION['client'])&& $_SESSION['client'] != 0) {
+if (isset($_SESSION['client']) && $_SESSION['client'] != 0) {
     $clientDB = new ClientDB($cnx);
     $client = $clientDB->getClientById($_SESSION['client']);
     ?>
