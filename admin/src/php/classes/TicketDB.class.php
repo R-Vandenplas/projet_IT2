@@ -5,20 +5,21 @@ class TicketDB extends Ticket
     private $_db;
     private $_attributs = array();
 
-    public function __construct($db)
+    public function __construct($cnx)
     {
-        $this->_db = $db;
+        $this->_db = $cnx;
     }
 
     public function ajout_ticket($client,$seance,$quantite){
         try{
-            $query="select ajout_ticket(:client,:seance,:quantite) as retour";
+            $query="select ajout_ticket(:client,:seance,:quantite) as retour"; //as retour si on veut récupérer une donnée
             $res = $this->_bd->prepare($query);
             $res->bindValue(':client',intval($client));
             $res->bindValue(':seance',intval($seance));
             $res->bindValue(':quantite',intval($quantite));
             $res->execute();
-            $data = $res->fetch();
+            $data = $res->fetchColumn(0);
+            // $data = $res->fetch();
             return $data;
         }catch(PDOException $e){
             print "Echec ".$e->getMessage();
